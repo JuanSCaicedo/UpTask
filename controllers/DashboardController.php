@@ -36,7 +36,7 @@ class DashboardController
             //Validación
             $alertas = $proyecto->validarProyecto();
 
-            if (empty($alertas)) {
+            if (empty ($alertas)) {
                 //Generar URL
                 $hash = md5(uniqid());
                 $proyecto->url = $hash;
@@ -89,7 +89,7 @@ class DashboardController
             $usuario->sincronizar($_POST);
             $alertas = $usuario->validar_perfil();
 
-            if (empty($alertas)) {
+            if (empty ($alertas)) {
                 $correoAnterior = $_SESSION['email'];
                 $nombre = $usuario->nombre;
 
@@ -132,12 +132,13 @@ class DashboardController
         ]);
     }
 
-    public static function cambiar_password(Router $router) {
+    public static function cambiar_password(Router $router)
+    {
         session_start();
         isAuth();
         $alertas = [];
 
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = Usuario::find($_SESSION['id']);
 
             //sincronizar usuario con sus datos
@@ -145,9 +146,9 @@ class DashboardController
 
             $alertas = $usuario->nuevo_password();
 
-            if(empty($alertas)) {
+            if (empty ($alertas)) {
                 $resultado = $usuario->comprobar_password();
-                if($resultado) {
+                if ($resultado) {
                     $usuario->password = $usuario->password_nuevo;
 
                     //Eliminar propiedades no necesarias
@@ -161,7 +162,7 @@ class DashboardController
                     //Guardar nuevo password
                     $resultado = $usuario->guardar();
 
-                    if($resultado){
+                    if ($resultado) {
                         Usuario::setAlerta('exito', 'Contraseña actualizada correctamente.');
                     }
                 } else {

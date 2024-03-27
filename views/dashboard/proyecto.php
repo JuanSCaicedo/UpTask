@@ -40,7 +40,6 @@
                 </div>
             </div>
         </div>
-
         <ul id="listado-tareas" class="listado-tareas">
         </ul>
     </div>

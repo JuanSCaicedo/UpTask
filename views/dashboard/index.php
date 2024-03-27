@@ -5,13 +5,18 @@
         <a href="/crear-proyecto">Comienza Creando Uno</a>
     </p>
 <?php } else { ?>
-    <ul class="listado-proyectos">
+    <ul class="listado-proyectos" id="listado-proyectos">
         <?php foreach ($proyectos as $proyecto) { ?>
-            <li>
-                <a class="proyecto" href="/proyecto?id=<?= $proyecto->url; ?>"><?= $proyecto->proyecto; ?></a>
+            <li class="proyecto" data-id="<?= $proyecto->id; ?>">
+                <a href="/proyecto?id=<?= $proyecto->url; ?>">
+                    <?= $proyecto->proyecto; ?>
+                </a>
+                <button class="eliminar-proyecto fa-solid fa-trash" data-id="<?= $proyecto->id; ?>"></button>
             </li>
         <?php } ?>
     </ul>
 <?php } ?>
 
-<?php include_once __DIR__ . '/footer-dashboard.php' ?>
+<?php 
+    include_once __DIR__ . '/footer-dashboard.php' 
+?>
