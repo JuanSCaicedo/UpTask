@@ -57,7 +57,7 @@ class Email {
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
 
-        $mail->setFrom('cuentas@juancaicedodevops.xyz');
+        $mail->setFrom('juan.caicedo@juancaicedodevops.xyz');
         $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Cambia tu contraseña';
 
