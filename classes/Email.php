@@ -25,7 +25,7 @@ class Email {
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
 
-        $mail->setFrom('juan.caicedo@juancaicedodevops.xyz', 'Juan Caicedo Cuentas');
+        $mail->setFrom('info@juandevops.com', 'Juan Caicedo Cuentas');
         $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Confirma tu cuenta';
 
@@ -57,7 +57,7 @@ class Email {
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
 
-        $mail->setFrom('juan.caicedo@juancaicedodevops.xyz', 'Juan Caicedo Cuentas');
+        $mail->setFrom('info@juandevops.com', 'Juan Caicedo Cuentas');
         $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Cambia tu contraseña';
 
