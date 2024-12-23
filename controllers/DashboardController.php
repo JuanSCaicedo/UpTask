@@ -14,7 +14,10 @@ class DashboardController
         session_start();
         isAuth();
 
-        $id = $_SESSION['id'];
+        // Verificar si 'id' existe en la sesión antes de usarlo
+        if (isset($_SESSION['id'])) {
+            $id = $_SESSION['id'];
+        }
 
         $proyectos = Proyecto::belongsTo('propietarioId', $id);
 
@@ -36,7 +39,7 @@ class DashboardController
             //Validación
             $alertas = $proyecto->validarProyecto();
 
-            if (empty ($alertas)) {
+            if (empty($alertas)) {
                 //Generar URL
                 $hash = md5(uniqid());
                 $proyecto->url = $hash;
@@ -89,7 +92,7 @@ class DashboardController
             $usuario->sincronizar($_POST);
             $alertas = $usuario->validar_perfil();
 
-            if (empty ($alertas)) {
+            if (empty($alertas)) {
                 $correoAnterior = $_SESSION['email'];
                 $nombre = $usuario->nombre;
 
@@ -146,7 +149,7 @@ class DashboardController
 
             $alertas = $usuario->nuevo_password();
 
-            if (empty ($alertas)) {
+            if (empty($alertas)) {
                 $resultado = $usuario->comprobar_password();
                 if ($resultado) {
                     $usuario->password = $usuario->password_nuevo;
