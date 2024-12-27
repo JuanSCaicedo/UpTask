@@ -15,9 +15,9 @@ class DashboardController
         isAuth();
 
         // Verificar si 'id' existe en la sesión antes de usarlo
-        if (isset($_SESSION['id'])) {
-            $id = $_SESSION['id'];
-        }
+        // Asignar un valor por defecto si 'id' no está en la sesión
+        $id = $_SESSION['id'] ?? null;
+
 
         $proyectos = Proyecto::belongsTo('propietarioId', $id);
 
